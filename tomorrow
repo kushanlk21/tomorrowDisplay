@@ -1,0 +1,138 @@
+#include <stdio.h>
+
+struct today {
+    int day;
+    int month;
+    int year;
+};
+
+struct tomorrow {
+    struct today t;
+};
+
+int main() 
+{
+    int mon1[6] = {1, 3, 5, 7, 8, 10};
+    int mon2[4] = {4, 6, 9, 11};
+    int i = 0;
+
+    struct today var1;
+    struct tomorrow var2;
+
+    printf("Enter the year: ");
+    scanf("%d", &var1.year);
+    printf("Enter the month: ");
+    scanf("%d", &var1.month);
+    printf("Enter the day: ");
+    scanf("%d", &var1.day);
+
+    if (var1.month < 13 && var1.month > 0) {
+        for (i = 0; i < 6; i++) {
+            if (var1.month == mon1[i]) {
+                if (var1.day > 0 && var1.day < 31) {
+                    var2.t.day = var1.day + 1;
+                    var2.t.month = var1.month;
+                    var2.t.year = var1.year;
+                    printf("Today is %d/%d/%d\n", var1.day, var1.month, var1.year);
+    				printf("Tomorrow is %d/%d/%d\n", var2.t.day, var2.t.month, var2.t.year);
+
+                } else if (var1.day == 31) {
+                    var2.t.day = 1;
+                    var2.t.month = var1.month + 1;
+                    var2.t.year = var1.year;
+                    printf("Today is %d/%d/%d\n", var1.day, var1.month, var1.year);
+    				printf("Tomorrow is %d/%d/%d\n", var2.t.day, var2.t.month, var2.t.year);
+
+                } else {
+                    printf("Invalid day");
+                }
+            }
+        }
+
+        for (i = 0; i < 4; i++) {
+            if (var1.month == mon2[i]) {
+                if (var1.day > 0 && var1.day < 30) {
+                    var2.t.day = var1.day + 1;
+                    var2.t.month = var1.month;
+                    var2.t.year = var1.year;
+                   printf("Today is %d/%d/%d\n", var1.day, var1.month, var1.year);
+    			   printf("Tomorrow is %d/%d/%d\n", var2.t.day, var2.t.month, var2.t.year);
+
+                } else if (var1.day == 30) {
+                    var2.t.day = 1;
+                    var2.t.month = var1.month + 1;
+                    var2.t.year = var1.year;
+                    printf("Today is %d/%d/%d\n", var1.day, var1.month, var1.year);
+    				printf("Tomorrow is %d/%d/%d\n", var2.t.day, var2.t.month, var2.t.year);
+
+                } else {
+                    printf("Invalid day");
+                }
+            }
+        }
+
+        if (var1.month == 2) {
+            if ((var1.year % 4 == 0 && var1.year % 100 != 0) || (var1.year % 400 == 0)) {
+                if (var1.day > 0 && var1.day < 29) {
+                    var2.t.day = var1.day + 1;
+                    var2.t.month = var1.month;
+                    var2.t.year = var1.year;
+					printf("Today is %d/%d/%d\n", var1.day, var1.month, var1.year);
+    				printf("Tomorrow is %d/%d/%d\n", var2.t.day, var2.t.month, var2.t.year);
+
+                } else if (var1.day == 29) {
+                    var2.t.day = 1;
+                    var2.t.month = var1.month + 1;
+                    var2.t.year = var1.year;
+					printf("Today is %d/%d/%d\n", var1.day, var1.month, var1.year);
+    				printf("Tomorrow is %d/%d/%d\n", var2.t.day, var2.t.month, var2.t.year);
+
+                } else {
+                    printf("Invalid day");
+                }
+            } else {
+                if (var1.day > 0 && var1.day < 28) {
+                    var2.t.day = var1.day + 1;
+                    var2.t.month = var1.month;
+                    var2.t.year = var1.year;
+                } else if (var1.day == 28) {
+                    var2.t.day = 1;
+                    var2.t.month = var1.month + 1;
+                    var2.t.year = var1.year;
+					printf("Today is %d/%d/%d\n", var1.day, var1.month, var1.year);
+    				printf("Tomorrow is %d/%d/%d\n", var2.t.day, var2.t.month, var2.t.year);
+
+                } else {
+                    printf("Invalid day");
+                }
+            }
+        }
+        else if (var1.month == 12) {
+            if (var1.day > 0 && var1.day < 31) {
+                var2.t.day = var1.day + 1;
+                var2.t.month = var1.month;
+                var2.t.year = var1.year;
+				printf("Today is %d/%d/%d\n", var1.day, var1.month, var1.year);
+    			printf("Tomorrow is %d/%d/%d\n", var2.t.day, var2.t.month, var2.t.year);
+
+            } else if (var1.day == 31) {
+                var2.t.day = 1;
+                var2.t.month = 1;
+                var2.t.year = var1.year + 1;
+				printf("Today is %d/%d/%d\n", var1.day, var1.month, var1.year);
+    			printf("Tomorrow is %d/%d/%d\n", var2.t.day, var2.t.month, var2.t.year);
+
+            } else {
+                printf("Invalid day");
+          
+            }
+        }
+    } else {
+        printf("Invalid month");
+
+    }
+
+    
+    return 0;
+}
+
